@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Layout_in_WinUI3.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Layout_in_WinUI3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+
+        <Grid>
+
+            <Grid
+                x:Name="AppTitleBar"
+                Height="48"
+                Margin="48,0,0,0"
+                VerticalAlignment="Top"
+                Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="AppFontIcon"
+                    Width="16"
+                    Height="16"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Source="/Assets/Square44x44Logo.png" />
+                <TextBlock
+                    Margin="12,0,0,0"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource CaptionTextBlockStyle}"
+                    Text="Application Title"/>
+            </Grid>
+
+            <NavigationView 
+                x:Name="AppNavigationControl" 
+                IsBackEnabled="False"
+                IsBackButtonVisible="Collapsed"
+                IsTitleBarAutoPaddingEnabled="False"
+                AlwaysShowHeader="True"
+                Header="Default Header" 
+                PaneDisplayMode="Auto" 
+                IsSettingsVisible="True"
+                IsTabStop="False" 
+                BackRequested="AppNavigationControl_BackRequested" 
+                ItemInvoked="AppNavigationControl_ItemInvoked">
+                <NavigationView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,-10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid x:Name="pageTitle"
+                                  Background="Transparent"
+                                  Height="44"
+                                  VerticalAlignment="Top">
+                                <TextBlock x:Name="title" 
+                                           Style="{StaticResource TitleTextBlockStyle}"
+                                           FontSize="24"
+                                           VerticalAlignment="Center"
+                                           Text="{Binding}"/>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </NavigationView.HeaderTemplate>
+                <NavigationView.MenuItems>
+                    <NavigationViewItem Icon="Home" Content="Home" Tag="Layout_in_WinUI3.Views.HomePage" />
+
+                </NavigationView.MenuItems>
+                <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated" Padding="55,10,0,0"/>
+
+            </NavigationView>
+
+
+
+        </Grid>
+
+    </StackPanel>
+
+</Window>

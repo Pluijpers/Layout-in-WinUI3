@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Layout in WinUI3 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Layout in WinUI3 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
