@@ -10,6 +10,29 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock Text="Settings" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <StackPanel x:Name="ContentArea">
+
+            <TextBlock Text="Settings" Style="{ThemeResource SubtitleTextBlockStyle}" />
+
+            <StackPanel>
+                <RadioButtons x:Name="ThemeSettingsRadioButton"
+                              SelectedIndex="2"
+                              MaxColumns="1"
+                              Header="Theme"
+                                HorizontalAlignment="Left"
+                              SelectionChanged="ThemeSettingsRadioButton_OnSelectionChanged">
+                    <x:String>Light</x:String>
+                    <x:String>Dark</x:String>
+                    <x:String>Default</x:String>
+                </RadioButtons>
+            </StackPanel>
+        </StackPanel>
+
+
+
     </Grid>
+
+
+
+
 </Page>

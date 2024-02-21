@@ -12,6 +12,10 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\Square128x128AppLogo.png" />
+    <Content Remove="Assets\Square44x44AppLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Views\HomePage.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
   </ItemGroup>
@@ -49,6 +53,9 @@
     <Page Update="Views\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <!-- 

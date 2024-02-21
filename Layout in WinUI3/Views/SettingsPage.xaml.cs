@@ -27,5 +27,11 @@ namespace Layout_in_WinUI3.Views
         {
             this.InitializeComponent();
         }
+
+        private void ThemeSettingsRadioButton_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            
+        }
     }
 }

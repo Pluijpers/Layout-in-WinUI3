@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock Text="Home Page" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    <Grid x:Name="ContentArea">
+        <TextBlock Text="Home Page" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" />
     </Grid>
 </Page>

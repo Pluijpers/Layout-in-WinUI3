@@ -27,17 +27,15 @@ namespace Layout_in_WinUI3
         {
             this.InitializeComponent();
 
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(AppTitleBar);
+
             AppNavigationControl.SelectedItem = AppNavigationControl.MenuItems.OfType<NavigationViewItem>().First();
             ContentFrame.Navigate(
                 typeof(Views.HomePage),
                 null,
                 new Microsoft.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo()
             );
-
-            //SystemBackdrop = new MicaBackdrop()
-            //{ Kind = MicaKind.Base };
-
-            ExtendsContentIntoTitleBar = true;
         }
 
 
