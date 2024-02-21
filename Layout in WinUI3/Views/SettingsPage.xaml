@@ -9,30 +9,41 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <StackPanel x:Name="ContentArea">
+    <Grid x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-            <TextBlock Text="Settings" Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <TextBlock
+            x:Name="PageHeader"
+            Margin="36,24,36,0"
+            Style="{StaticResource TitleTextBlockStyle}"
+            Text="Settings" />
+
+        <ScrollViewer
+            x:Name="ContentScrollViewer"
+            Grid.Row="1"
+            Padding="36,0,36,0"
+            IsTabStop="False"
+            UseSystemFocusVisuals="False"
+            VerticalScrollBarVisibility="Auto"
+            VerticalScrollMode="Auto">
 
             <StackPanel>
-                <RadioButtons x:Name="ThemeSettingsRadioButton"
-                              SelectedIndex="2"
-                              MaxColumns="1"
-                              Header="Theme"
-                                HorizontalAlignment="Left"
-                              SelectionChanged="ThemeSettingsRadioButton_OnSelectionChanged">
-                    <x:String>Light</x:String>
-                    <x:String>Dark</x:String>
-                    <x:String>Default</x:String>
-                </RadioButtons>
+                <StackPanel.ChildrenTransitions>
+                    <EntranceThemeTransition FromVerticalOffset="50" />
+                    <RepositionThemeTransition IsStaggeringEnabled="False" />
+                </StackPanel.ChildrenTransitions>
+                <TextBlock  Text="Appearance" />
+
+                <ComboBox x:Name="ThemeModeComboBox" SelectionChanged="ThemeModeComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Light" Tag="Light" />
+                    <ComboBoxItem Content="Dark" Tag="Dark" />
+                    <ComboBoxItem Content="Use system setting" Tag="Default" />
+                </ComboBox>
+
             </StackPanel>
-        </StackPanel>
-
-
-
+        </ScrollViewer>
     </Grid>
-
-
-
-
 </Page>
