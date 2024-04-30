@@ -1,3 +1,4 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,6 +27,28 @@ namespace Layout_in_WinUI3.Views
         public SettingsPage()
         {
             this.InitializeComponent();
+        }
+
+        private void ThemeModeComboBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            var selectedTheme = ((ComboBoxItem)ThemeModeComboBox.SelectedItem)?.Tag?.ToString();
+
+            if (selectedTheme != null)
+            {
+
+                if (selectedTheme == "Dark")
+                {
+                    RequestedTheme = ElementTheme.Dark;
+                }
+                else if (selectedTheme == "Light")
+                {
+                    RequestedTheme = ElementTheme.Light;
+                }
+                else
+                {
+                    RequestedTheme = ElementTheme.Default;
+                }
+            }
         }
     }
 }

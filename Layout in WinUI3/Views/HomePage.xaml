@@ -9,37 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid  >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
-
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="1" Text="This is a text block in the home page." />
-
-        <StackPanel  Margin="40,0,0,0" Grid.Row="2" Orientation="Horizontal">
-
-            <ToggleSwitch OffContent="Skip PDF" OnContent="Include PDF" IsOn="True" />
-            <ToggleSwitch OffContent="Skip Excel" OnContent="Include Excel" IsOn="True" />
-            <ToggleSwitch OffContent="Skip Word" OnContent="Include Word" IsOn="True" />
-            <ToggleSwitch OffContent="Skip PowerPoint" OnContent="Include PowerPoint" IsOn="True" />
-            <ToggleSwitch OffContent="Skip Zip" OnContent="Include ZIP" IsOn="True" />
-
-        </StackPanel>
-
-        <StackPanel Margin="40,0,0,0" Orientation="Horizontal"  Grid.Row="3" x:Name="ProtectionToggle">
-
-            <RadioButton Content="Add Protection" GroupName="ProtectionType" IsChecked="True" />
-            <RadioButton Content="Remove Protection" GroupName="ProtectionType" IsChecked="false" />
-            <RadioButton Content="Change Protection" GroupName="ProtectionType" IsChecked="false" />
-
-        </StackPanel>
-
-
-
-
+    <Grid x:Name="ContentArea">
+        <TextBlock Text="Home Page" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" />
     </Grid>
 </Page>
