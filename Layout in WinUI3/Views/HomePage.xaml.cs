@@ -27,5 +27,6 @@ namespace Layout_in_WinUI3.Views
         {
             this.InitializeComponent();
         }
+
     }
 }

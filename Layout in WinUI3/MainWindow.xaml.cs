@@ -12,6 +12,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.UI.Composition.SystemBackdrops;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -34,10 +35,10 @@ namespace Layout_in_WinUI3
                 new Microsoft.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo()
             );
 
-            //SystemBackdrop = new MicaBackdrop()
-            //{ Kind = MicaKind.Base };
+            SystemBackdrop = new MicaBackdrop { Kind = MicaKind.Base };
 
             ExtendsContentIntoTitleBar = true;
+            SetTitleBar(AppTitleBar);
         }
 
 

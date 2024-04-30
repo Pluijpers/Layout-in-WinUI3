@@ -10,6 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock Text="Settings" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Text="This is a text block in the settings page." />
     </Grid>
 </Page>
