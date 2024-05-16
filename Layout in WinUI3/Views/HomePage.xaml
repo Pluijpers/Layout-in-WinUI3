@@ -6,10 +6,66 @@
     xmlns:local="using:Layout_in_WinUI3.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:Layout_in_WinUI3.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:Name="ContentArea">
-        <TextBlock Text="Home Page" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" />
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- File Selection Header -->
+        <TextBlock Grid.Row="0" Text="Home Page" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" />
+
+        <!-- File Selector Row -->
+        <Grid Grid.Row="1" Margin="0,50,30,0" AllowDrop="True">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" PlaceholderText="Enter file name..." HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Content="..." HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        </Grid>
+
+        <!-- File Selections Row -->
+        <ListBox Grid.Row="2" x:Name="FileListBox" MaxHeight="150" Background="{ThemeResource TextControlBackground}" AllowDrop="True" DragOver="FileListBox_OnDragOver" Drop="FileListBox_OnDrop">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Text="Delete" Click="FileListBox_DeleteItem_Click" />
+                            </MenuFlyout>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBoxItem>Item 1</ListBoxItem>
+            <ListBoxItem>Item 2</ListBoxItem>
+            <ListBoxItem>Item 3</ListBoxItem>
+            <ListBoxItem>Item 4</ListBoxItem>
+            <ListBoxItem>Item 5</ListBoxItem>
+            <ListBoxItem>Item 6</ListBoxItem>
+            <ListBoxItem>Item 7</ListBoxItem>
+
+        </ListBox>
+
+
+        <!-- Watermark Header -->
+        <TextBlock Grid.Row="3">Watermark(s)</TextBlock>
+        <TextBox Grid.Row="4"></TextBox>
+        <Button Grid.Row="5" Content="Mark"/>
+
     </Grid>
 </Page>
