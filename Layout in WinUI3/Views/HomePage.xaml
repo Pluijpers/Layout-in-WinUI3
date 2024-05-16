@@ -65,7 +65,29 @@
         <!-- Watermark Header -->
         <TextBlock Grid.Row="3">Watermark(s)</TextBlock>
         <TextBox Grid.Row="4"></TextBox>
-        <Button Grid.Row="5" Content="Mark"/>
+
+        <StackPanel  Margin="40,0,0,0" Grid.Row="5" Orientation="Horizontal">
+
+            <ToggleSwitch OffContent="Skip PDF" OnContent="Include PDF" IsOn="True" />
+            <ToggleSwitch OffContent="Skip Excel" OnContent="Include Excel" IsOn="True" />
+            <ToggleSwitch OffContent="Skip Word" OnContent="Include Word" IsOn="True" />
+            <ToggleSwitch OffContent="Skip PowerPoint" OnContent="Include PowerPoint" IsOn="True" />
+            <ToggleSwitch OffContent="Skip Zip" OnContent="Include ZIP" IsOn="True" />
+
+        </StackPanel>
+
+        <StackPanel Margin="40,0,0,0" Orientation="Horizontal"  Grid.Row="6" x:Name="ProtectionToggle">
+
+            <RadioButton Content="Add Protection" GroupName="ProtectionType" IsChecked="True" />
+            <RadioButton Content="Remove Protection" GroupName="ProtectionType" IsChecked="false" />
+            <RadioButton Content="Change Protection" GroupName="ProtectionType" IsChecked="false" />
+
+        </StackPanel>
+
+
+
+
+        <Button Grid.Row="7" Content="Mark"/>
 
     </Grid>
 </Page>
