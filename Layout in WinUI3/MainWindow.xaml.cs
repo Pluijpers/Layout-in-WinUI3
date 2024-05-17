@@ -80,27 +80,5 @@ namespace Layout_in_WinUI3
 
 
 
-        private void OnDragOver(object sender, DragEventArgs e)
-        {
-            //e.AcceptedOperation = DataPackageOperation.Copy;
-
-            //e.DragUIOverride.IsCaptionVisible = false;
-            //e.DragUIOverride.IsGlyphVisible = false;
-        }
-
-        private async void OnDrop(object sender, DragEventArgs e)
-        {
-            //if (e.DataView.Contains(StandardDataFormats.StorageItems))
-            //{
-            //    var items = await e.DataView.GetStorageItemsAsync();
-
-            //    foreach (var item in items)
-            //    {
-            //        if (item is StorageFile file)
-            //        {
-            //        }
-            //    }
-            //}
-        }
     }
 }
