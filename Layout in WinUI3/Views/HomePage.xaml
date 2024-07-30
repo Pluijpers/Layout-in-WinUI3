@@ -49,7 +49,10 @@
             <TextBox Grid.Column="0" 
                      PlaceholderText="Enter file name..." 
                      HorizontalAlignment="Stretch" 
-                     VerticalAlignment="Center"/>
+                     VerticalAlignment="Center"
+                     AllowDrop="True" 
+                     DragOver="FileListView_OnDragOver" 
+                     Drop="FileListView_OnDrop"/>
             <Button Grid.Column="1" 
                     Content="..." 
                     HorizontalAlignment="Left" 
@@ -63,23 +66,20 @@
                  Grid.Row="2" 
                  Margin="20,16,20,0"
                  MaxHeight="150" 
+                 MinHeight="150" 
                  Background="{ThemeResource TextControlBackground}" 
                  AllowDrop="True" 
                  DragOver="FileListView_OnDragOver" 
                  Drop="FileListView_OnDrop"
+                 SelectionMode="Single"
+                 RightTapped="FileListView_OnRightTapped"
                  SelectionChanged="FileListView_SelectionChanged">
 
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:FileItem">
                     <TextBlock Text="{Binding Name}" Width="Auto"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
-
-            <ListView.ContextFlyout>
-                <MenuFlyout Opening="FileListView_ContextFlyout_Opening">
-                    <MenuFlyoutItem Text="Delete" Click="FileListView_DeleteItem_Click" />
-                </MenuFlyout>
-            </ListView.ContextFlyout>
 
         </ListView>
 

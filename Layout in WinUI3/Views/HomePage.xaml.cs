@@ -69,46 +69,60 @@ namespace Layout_in_WinUI3.Views
             }
         }
 
-        private void FileListView_ContextFlyout_Opening(object sender, object e)
+        private void FileListView_OnRightTapped(object sender, RightTappedRoutedEventArgs e)
         {
-            // Enable or disable the "Delete" menu item based on selection
-            var context = sender as MenuFlyout;
-
-            //context.Items. .IsEnabled = FileListView.SelectedItems.Count > 0;
-        }
-
-    private void FileListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        // Handle the selection change here
-        // You can access the selected item(s) using e.AddedItems
-        // For example:
-        if (e.AddedItems.Count > 0)
-        {
-            // An item was selected
-            if (e.AddedItems[0] is FileItem selectedItem)
+            if (e.OriginalSource is FrameworkElement element &&
+                element.DataContext is FileItem item &&
+                FileListView.SelectedItem == item)
             {
-                // Do something with the selected item (e.g., show details, enable buttons, etc.)
+                // Create and configure the MenuFlyout
+                var menuFlyout = new MenuFlyout();
+
+                var deleteItem = new MenuFlyoutItem
+                {
+                    Text = "Delete"
+                };
+                deleteItem.Click += OnDeleteItemClick;
+
+                menuFlyout.Items.Add(deleteItem);
+
+                // Show the MenuFlyout at the position where the right-click occurred
+                menuFlyout.ShowAt(element, e.GetPosition(element));
             }
         }
-        else
+
+        private void FileListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // No item is selected
-            // You can disable buttons or perform other actions as needed
+            // Handle the selection change here
+            // You can access the selected item(s) using e.AddedItems
+            // For example:
+            if (e.AddedItems.Count > 0)
+            {
+                // An item was selected
+                if (e.AddedItems[0] is FileItem selectedItem)
+                {
+                    // Do something with the selected item (e.g., show details, enable buttons, etc.)
+                }
+            }
+            else
+            {
+                // No item is selected
+                // You can disable buttons or perform other actions as needed
+            }
+        }
+
+
+        private void OnDeleteItemClick(object sender, RoutedEventArgs e)
+        {
+            if (FileListView.SelectedItem == null) return;
+
+            var selectedItem = FileListView.SelectedItem as FileItem;
+            Files.Remove(selectedItem);
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var x = Files.Count;
         }
     }
-
-
-    private void FileListView_DeleteItem_Click(object sender, RoutedEventArgs e)
-    {
-        if (FileListView.SelectedItem == null) return;
-
-        var selectedItem = FileListView.SelectedItem as FileItem;
-        Files.Remove(selectedItem);
-    }
-
-    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-    {
-        var x = Files.Count;
-    }
-}
 }
